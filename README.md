@@ -107,3 +107,12 @@ Em routes.js não importa o BrowserRouter.
 
 Ele vai ser importado em app.js. Isso pq o Header da aplicação vai se manter
 em todas as rotas, pois vai ter como função, fazer a navegalção do site.
+
+## Estilos Globais
+
+\$ yarn add styled-components
+
+Google font Roboto
+
+Imagem de background baixada de link na page da aula
+background: #191919 url(\${background}) no-repeat center top;

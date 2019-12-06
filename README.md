@@ -1,68 +1,109 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Bootcamp Rocketseat Arquitetura Flux
 
-## Available Scripts
+## Estrutura do Projeto
 
-In the project directory, you can run:
+```
+$ yarn create react-app
 
-### `yarn start`
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Já vem com Babel e Webpack configurados
+O Webpack e o Babel estão em react-scripts (v. package.json)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Em package.json
 
-### `yarn test`
+```
+ "scripts": {
+    "start": "react-scripts start", -> ambiente de desenvolvimento
+    "build": "react-scripts build", -> ambiente de produção
+    "test": "react-scripts test", -> rodar os testes
+    "eject": "react-scripts eject"-> Para configurar Babel e Webpack se quiser configurar do zero
+  }
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `yarn build`
+- Deletar configurações do EsLint para configurá-lo do zero;
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Deletar arquivo manifest.json;
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Os arquivos da pasta src já vêm configurados por padrão;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  \$ yarn start
 
-### `yarn eject`
+Roda a aplicação em localhost:3000
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Deletar da pasta src:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- app.css
+- app.test.js
+- index.css
+- logo.svg
+- serviceWorker.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Em index.js
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- remover as partes do serviceWorker;
+- a importação do CSS;
 
-## Learn More
+Em App.js
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- remover a logo e o CSS;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ESLint, Prettier & EditorConfig
 
-### Code Splitting
+- Botão direito e escolher Generate .editorconfig
+- Trocar os falses p true e add end_of_line = lf
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+      $ yarn add eslint -D
 
-### Analyzing the Bundle Size
+      $ yarn eslint --init
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Selecionar To check syntax, find problems, and enforce code style
+e depois as seguintes que já aparecem selecionadas
 
-### Making a Progressive Web App
+? Would you like to install them now with npm? escolher Yes
+? Does your project use TypeScript? (y/N) N (escolher Não)
+Y para o resto
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Vai instalar todas as bibliotecas
 
-### Advanced Configuration
+Remover package-lock.json e rodar
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+     $ yarn
 
-### Deployment
+Para atualizar as dependências em yarn.lock
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Instalar dependências
 
-### `yarn build` fails to minify
+Exceto babel-eslint como está no vídeo. Isso pq ele já vem no react-scripts
+Então o comando correto fica desse jeito:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+\$ yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+
+Fazer as modificações em .eslintrc.js
+
+Salvar e criar arquivo .prettierrc na raiz
+
+O prettier deixa o código mais bonito e o EsLint procura por erros
+
+Para rodar o servidor:
+
+```
+$ yarn start
+
+```
+
+## Configurando Rotas
+
+\$ yarn add react-router-dom
+
+src/Pages/Cart - Carrinho
+
+src/PagesHome - principal
+
+#### BrowserRouter
+
+Em routes.js não importa o BrowserRouter.
+
+Ele vai ser importado em app.js. Isso pq o Header da aplicação vai se manter
+em todas as rotas, pois vai ter como função, fazer a navegalção do site.

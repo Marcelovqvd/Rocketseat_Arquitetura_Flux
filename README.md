@@ -116,3 +116,17 @@ Google font Roboto
 
 Imagem de background baixada de link na page da aula
 background: #191919 url(\${background}) no-repeat center top;
+
+## Criando Header
+
+## Estilizaçao da Home
+
+lib para manipular cores no javascript polished
+
+$ yarn add polished
+
+escurece cor do botão de adicionar ao carrinho
+
+
+
+

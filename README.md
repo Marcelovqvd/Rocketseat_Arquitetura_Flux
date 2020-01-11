@@ -127,6 +127,40 @@ $ yarn add polished
 
 escurece cor do botão de adicionar ao carrinho
 
+## Estilização do Carrinho
+
+## Configurando API
+
+#### json-server
+
+API fake p projetos em desenvolvimento
+
+https://github.com/typicode/json-server
+
+Para instalar
+
+$ yarn global add json-server
+
+Arquivo da API
+
+    server.json
+
+Tem as rotas - 'stock' e 'products'
+
+    src/services/api.js
+
+    $ yarn add axios
+
+#### Para rodar a API
+
+    json-server server.json -p 3333
+
+
+
+
+
+
+
 
 
 

@@ -167,6 +167,44 @@ Criar src/utilformat.js
 
 importar a função formatPrice em Home/index
 
+## Configurando o Redux
+
+Instalar pacote do Redux e sua integração com react 
+
+    $ yarn add redux react-redux 
+
+Em src/store vão ficar todos os arquivos relacionados ao Redux
+
+O store será o estado global
+
+Importar Provider from react-redux em App.js. O Provider deixa o store disponível para
+todos os componentes. O store deve ser passado como parâmetro na tag Provider.
+
+Agora toda a aplicação tem acesso ao store
+
+
+Em src/store/index.js vai estar um Reducer (q vai ser o carrinho de compras) no formato de função.
+Dele será retornado o stado inicial do carrinho - array vazio.
+
+P melhorar, jogar o reducer dentro de src/store/modules/cart/reducer.js
+
+É possível ter vários reducers dentro de uma aplicação e para isso deve-se combinar todos os reducers em 
+um único reducer
+
+Para ter vários reducers
+
+  store/modules/rootReducer.js 
+
+Em rootReducer importar combineReducers 
+
+
+
+
+
+
+
+
+
 
 
 

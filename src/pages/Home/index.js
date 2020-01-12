@@ -1,95 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { MdShoppingCart } from 'react-icons/md';
+import { formatPrice } from '../../util/format';
+import api from '../../services/api';
 
 import { ProductList } from './styles';
 
-export default function Home() {
-  return (
-  <ProductList>
-    <li>
-      <img src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/h9a/h85/h00/h00/9543861829662/1002001300007U-01-BASEIMAGE-Lores.jpg" alt="Tênis"/>
+export default class Home extends Component {
+  state = {
+    products: [],
+  };
+
+  async componentDidMount() {
+    const response = await api.get('products');
+
+    const data = response.data.map(product => ({
+      ...product,
+      priceFormatted: formatPrice(product.price,),
+    }));
+
+    this.setState({ products: data});
+  }
+
+  render() {
+    const { products } = this.state;
+
+      return (
+      <ProductList>
+        {products.map(product => (
+           <li key={product.id}>
+           <img src={product.image} 
+           alt={product.title} 
+           />
+     
+         <strong>{product.title}</strong>
+         <span>{product.priceFormatted}</span>
  
-    <strong>Tênis cano alto</strong>
-    <span>R$300,00</span>
-
-    <button type="button">
-      <div>
-        <MdShoppingCart size={16} color="#fff" /> 3
-      </div>
-
-      <span>Adicionar ao carrinho</span>
-    </button>
-    </li>
-    <li>
-      <img src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/h9a/h85/h00/h00/9543861829662/1002001300007U-01-BASEIMAGE-Lores.jpg" alt="Tênis"/>
+         <button type="button">
+           <div>
+             <MdShoppingCart size={16} color="#fff" /> 3
+           </div>
  
-    <strong>Tênis cano alto</strong>
-    <span>R$300,00</span>
-
-    <button type="button">
-      <div>
-        <MdShoppingCart size={16} color="#fff" /> 3
-      </div>
-
-      <span>Adicionar ao carrinho</span>
-    </button>
-    </li>
-    <li>
-      <img src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/h9a/h85/h00/h00/9543861829662/1002001300007U-01-BASEIMAGE-Lores.jpg" alt="Tênis"/>
- 
-    <strong>Tênis cano alto</strong>
-    <span>R$300,00</span>
-
-    <button type="button">
-      <div>
-        <MdShoppingCart size={16} color="#fff" /> 3
-      </div>
-
-      <span>Adicionar ao carrinho</span>
-    </button>
-    </li>
-    <li>
-      <img src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/h9a/h85/h00/h00/9543861829662/1002001300007U-01-BASEIMAGE-Lores.jpg" alt="Tênis"/>
- 
-    <strong>Tênis cano alto</strong>
-    <span>R$300,00</span>
-
-    <button type="button">
-      <div>
-        <MdShoppingCart size={16} color="#fff" /> 3
-      </div>
-
-      <span>Adicionar ao carrinho</span>
-    </button>
-    </li>
-    <li>
-      <img src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/h9a/h85/h00/h00/9543861829662/1002001300007U-01-BASEIMAGE-Lores.jpg" alt="Tênis"/>
- 
-    <strong>Tênis cano alto</strong>
-    <span>R$300,00</span>
-
-    <button type="button">
-      <div>
-        <MdShoppingCart size={16} color="#fff" /> 3
-      </div>
-
-      <span>Adicionar ao carrinho</span>
-    </button>
-    </li>
-    <li>
-      <img src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/h9a/h85/h00/h00/9543861829662/1002001300007U-01-BASEIMAGE-Lores.jpg" alt="Tênis"/>
- 
-    <strong>Tênis cano alto</strong>
-    <span>R$300,00</span>
-
-    <button type="button">
-      <div>
-        <MdShoppingCart size={16} color="#fff" /> 3
-      </div>
-
-      <span>Adicionar ao carrinho</span>
-    </button>
-    </li>
-  </ProductList>
-  );
+           <span>Adicionar ao carrinho</span>
+         </button>
+         </li>
+         
+        ))}
+       
+      </ProductList>
+    );
+  }
 }

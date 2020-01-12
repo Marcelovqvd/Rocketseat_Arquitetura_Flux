@@ -153,7 +153,22 @@ Tem as rotas - 'stock' e 'products'
 
 #### Para rodar a API
 
-    json-server server.json -p 3333
+    json-server server.json -p 3333 -w
+
+## Buscando produtos da API
+
+#### formatação do preço dos produtos
+
+Utiliza funcionalidade nativa do Javascript chamada Intl
+
+É uma classe para fazer internacionalização
+
+Criar src/utilformat.js
+
+importar a função formatPrice em Home/index
+
+
+
 
 
 

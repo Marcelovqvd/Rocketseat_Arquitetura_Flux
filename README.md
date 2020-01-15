@@ -197,6 +197,89 @@ Para ter vários reducers
 
 Em rootReducer importar combineReducers 
 
+## Adicionando ao carrinho
+
+Objetivo - Fazer com que o Reducer do Cart seja acessível à toda a aplicação
+
+Quando clicar em adicionar ao carrinho. Passar o objeto do produto para 
+o reducer do Cart.
+
+
+#### disparar ação do botão 'adicionar ao carrinho'
+
+Em Home/index.js:
+
+Importar connect from react-redux. O connect retorna a funçao Home. O connect
+conecta o componente com o estado do Redux
+
+Para realizar uma alteração no estado é preciso disparar a ACTION
+
+#### ACTION:
+
+É um objeto que contém um 'type' (obrigatório) e outros conteúdos que quiser
+
+onClick this.handleAddProduct(product)
+
+Todo componente que se conecta com o Redux recebe uma propriedade chamada 'dispatch'
+
+#### Dispatch 
+
+É uma propriedade que serve para disparar uma action ao Redux.
+
+    this.props.dispacth
+
+Sempre que se dispara uma action, um dispatch, de dentro de um componente, todos os reducers
+são ativados. 
+
+As informações específicas p a ação esta variável 'action'. Todo reducer
+recebe por padrão as variáveis 'state' e 'action'
+
+    export default function cart(state, action)
+
+A action é a ação que se está disparando
+
+O state é o state anterior da alteração feita pela action
+
+Todo reducer vai seguir o esquema switch/case
+
+então p ouvir a action ADD_TO_CART, cria-se um case e retorna o state modificado como quiser
+
+    switch(action.type){
+    case 'ADD_TO_CART':
+      return [];
+      default: 
+      return state;
+    }
+
+No caso, o switch vai garantir que este reducer só ouça a ação add to cart
+
+Os reducers que não ouvirem a ação, deixarão o state da forma como estava - 
+por isso o return state
+
+Para acessar as informações do reducer dentro de outro componente qualquer
+deve-se usar o connect que tem como parâmetro uma função que é o state que retorna as informações
+que se quer acessar - retorna em formato de objeto.
+
+Sempre que o state mudar, o componente vai ser renderizado do zero, mostrando assim, as novas 
+informações que se tem no estado do Redux
+
+cartSize para mostrar quantos produtos foram colocados no carrinho
+
+#### fluxo do redux 
+
+* Componente dispara Action;
+* Action avisa o Reducer;
+* Reducer faz as alterações necessárias;
+* Redux avisa todos os componentes que precisam da informação;
+* Estes componentes se atualizam com a nova informação;
+
+
+
+
+
+
+
+
 
 
 
